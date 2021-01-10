@@ -1,2 +1,2 @@
 # labs
-Experiments and labs of diverse kind
+Experiments and labs of many kinds
