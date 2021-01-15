@@ -1,3 +1,6 @@
+# WARNING: Using lists as vectors is terrible for performance. In production code, you would want to use the NumPy
+# library, which includes a high-performance array class with all sorts of arithmetic operations included
+import math
 from typing import List
 
 # Define the type Vector of decimal numbers
@@ -53,9 +56,31 @@ def dot(v: Vector, w: Vector) -> float:
     return sum(v_i * w_i for v_i, w_i in zip(v, w))
 
 
+def sum_of_squares(v: Vector) -> float:
+    """Returns v_1 * v_1 + ... + v_n * v_n"""
+    return dot(v, v)
+
+
+def magnitude(v: Vector) -> float:
+    """Returns the length of v"""
+    return math.sqrt(sum_of_squares(v))
+
+
+def squared_distance(v: Vector, w: Vector) -> float:
+    """Computes (v_1 - w_1)**2 + (v_2 - w_2)**2 + ... + (v_n - w_n)**2"""
+    return sum_of_squares(substract(v, w))
+
+
+def distance(v: Vector, w: Vector) -> float:
+    """Computes the distance between v and w"""
+    return magnitude(substract(v, w))
+
+
 assert add([1, 2, 3], [4, 5, 6]) == [5, 7, 9]
 assert substract([1, 2, 3], [4, 2, 6]) == [-3, 0, -3]
 assert vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]]) == [16, 20]
 assert scalar_multiply(2, [1, 2, 3]) == [2, 4, 6]
 assert vector_mean([[1, 2], [3, 4], [5, 6]]) == [3, 4]
 assert dot([1, 2, 3], [4, 5, 6]) == 32
+assert sum_of_squares([1, 2, 3]) == 14
+assert magnitude([3, 4]) == 5
