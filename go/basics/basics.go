@@ -102,7 +102,7 @@ func fahrenheitToCelcius() {
 
 	celcius := (fahrenheit - 32.0) * (5.0 / 9.0)
 
-	fmt.Println("Degrees Fahrenheit: ")
+	fmt.Println("Degrees Celcius: ")
 	fmt.Println(celcius)
 }
 

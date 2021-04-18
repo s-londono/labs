@@ -1,6 +1,8 @@
 import math
 import matplotlib.pyplot as plt
 
+# Package scipy.stats contains PDF and CDF functions for most probability distributions
+
 SQRT_TWO_PI = math.sqrt(2 * math.pi)
 
 
